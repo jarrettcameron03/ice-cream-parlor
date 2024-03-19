@@ -14,7 +14,7 @@
     <script src="app.js" defer></script>
 </head>
 
-<body class="debug">
+<body>
     <main class="container-fluid">
         <div class="row p-5">
             <div class="col-5 bg-light shadow">
@@ -32,10 +32,13 @@
                         Total
                     </div>
                 </div>
-                <div id="cart" class="row p-2" style="min-height: 80dvh;">
+                <div id="cart" class="row p-2 align-content-start cart-items" style="min-height: 80dvh;">
                 </div>
-                <div class="row fs-4 py-2">
-                    <div class="text-end border-top border-3 border-dark col-12">
+                <div class="row fs-4 py-2 border-top border-3 border-dark">
+                    <div class="col-4">
+                        <button class="btn btn-primary" onclick="resetCart()">Checkout</button>
+                    </div>
+                    <div class="text-end col-8">
                         TOTAL: <span id="price" class="text-primary fw-bold">$0.00</span>
                     </div>
                 </div>
@@ -46,21 +49,21 @@
                         <h1>Toppings</h1>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
+                        <div class="card p-3 shadow" onclick="addItem('toppings', 'Sprinkles')">
                             <img src="https://images.unsplash.com/photo-1516746924755-babd21844370?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Sprinkles - $0.25</h5>
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
+                        <div class="card p-3 shadow" onclick="addItem('toppings', 'Chocolate Chips')">
                             <img src="https://images.unsplash.com/photo-1585502866757-30ae9e509e31?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Chocolate Chips - $0.25</h5>
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
+                        <div class="card p-3 shadow" onclick="addItem('toppings', 'Gummy Worms')">
                             <img src="https://images.unsplash.com/photo-1499195333224-3ce974eecb47?q=80&w=1951&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Gummy Worms - $0.50</h5>
@@ -70,21 +73,21 @@
                         <h1>Vessels</h1>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
+                        <div class="card p-3 shadow" onclick="addItem('vessel', 'Waffle Cone')">
                             <img src="https://images.unsplash.com/photo-1559703248-dcaaec9fab78?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Waffle Cone - $3.00</h5>
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
+                        <div class="card p-3 shadow" onclick="addItem('vessel', 'Waffle Bowl')">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkA216eQ4fNgR0Qpi2AgaSd9tNkdEf3ytrD15BUTDR0mr3CUAsaP8WMnfX5j_khOnYvxg&usqp=CAU"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Waffle Bowl - $4.00</h5>
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
+                        <div class="card p-3 shadow" onclick="addItem('vessel', 'Dipped Cone')">
                             <img src="https://www.courtneyssweets.com/wp-content/uploads/2016/10/Chocolate-Filled-Ice-Cream-Cones-1.jpg"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Dipped Cone - $5.00</h5>
@@ -94,22 +97,22 @@
                         <h1>Ice Cream</h1>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
+                        <div class="card p-3 shadow" onclick="addItem('icecream', 'Cookie Dough')">
                             <img src="https://images.unsplash.com/photo-1642520597159-1076f97cd8c6?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Cookie Dough - $1.25</h5>
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
+                        <div class="card p-3 shadow" onclick="addItem('icecream', 'Vanilla')">
                             <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?q=80&w=1912&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Vanilla - $1.00</h5>
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card p-3 shadow">
-                            <img src="https://images.unsplash.com/photo-1499195333224-3ce974eecb47?q=80&w=1951&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        <div class="card p-3 shadow" onclick="addItem('icecream', 'Strawberry')">
+                            <img src="https://images.unsplash.com/photo-1633933358116-a27b902fad35?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="" class="card-img">
                             <h5 class="card-title text-center">Strawberry - $1.25</h5>
                         </div>

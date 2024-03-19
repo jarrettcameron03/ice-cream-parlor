@@ -46,6 +46,8 @@ const vessel = [{
     quantity: 0
 }]
 
+let vesselLocked = false
+
 function resetCart() {
     iceCream.forEach((i) => {
         i.quantity = 0;
@@ -59,33 +61,68 @@ function resetCart() {
         i.quantity = 0;
     });
 
+    vesselLocked = false
+
     drawCart();
 }
 
 function drawCart() {
     let cartInject = '';
+    let total = 0
 
     iceCream.forEach((i) => {
         if (i.quantity > 0) {
-            cartInject += prepareHTML(i);
+            cartInject += prepareHTML(i)
+            total += i.quantity * i.price
         }
     });
 
     toppings.forEach((i) => {
         if (i.quantity > 0) {
-            cartInject += prepareHTML(i);
+            cartInject += prepareHTML(i)
+            total += i.quantity * i.price
         }
     });
 
     vessel.forEach((i) => {
         if (i.quantity > 0) {
-            cartInject += prepareHTML(i);
+            cartInject += prepareHTML(i)
+            total += i.quantity * i.price
         }
     });
 
     document.getElementById('cart').innerHTML = cartInject;
+    document.getElementById('price').innerText = `$${total.toFixed(2)}`;
+}
+
+function addItem(cat, iname) {
+    let catArray
+    switch (cat) {
+        case 'toppings':
+            catArray = toppings
+            break
+        case 'vessel':
+            catArray = vessel
+            if (vesselLocked) {
+                alert("You cannot have more than one vessel!")
+                return
+            }
+            vesselLocked = true
+            break
+        case 'icecream':
+            catArray = iceCream
+            break
+    }
+
+    Array.from(catArray).forEach((i) => {
+        if (i.name == iname) {
+            i.quantity++;
+        }
+    })
+
+    drawCart()
 }
 
 function prepareHTML(item) {
-    return `<div class="col-6">${item.name}</div><div class="col-2 text-center">${item.quantity}</div><div class="col-2 text-center">${item.price}</div><div class="col-2 text-center">${item.quantity * item.price}</div>`;
+    return `<div class="col-6">${item.name}</div><div class="col-2 text-center">${item.quantity}</div><div class="col-2 text-center">$${item.price.toFixed(2)}</div><div class="col-2 text-center">$${(item.quantity * item.price).toFixed(2)}</div>`;
 }

@@ -7,3 +7,12 @@ body {
     object-position: center;
     max-height: 15dvh;
 }
+
+.card {
+    cursor: pointer;
+}
+
+.cart-items>div {
+    border-bottom: 1px solid gray;
+    padding: 0.3em 0;
+}
