@@ -1,0 +1,9 @@
+body {
+    background-color: #f9ee9d;
+}
+
+.card .card-img {
+    object-fit: cover;
+    object-position: center;
+    max-height: 15dvh;
+}
